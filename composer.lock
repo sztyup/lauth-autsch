@@ -3713,16 +3713,16 @@
         },
         {
             "name": "sztyup/lauth",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sztyup/lauth.git",
-                "reference": "de6cd3932131cb3090395e6a1813ac31ef203c2d"
+                "reference": "d06e3d5d82e740ac445edee0791597b0d94b45c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sztyup/lauth/zipball/de6cd3932131cb3090395e6a1813ac31ef203c2d",
-                "reference": "de6cd3932131cb3090395e6a1813ac31ef203c2d",
+                "url": "https://api.github.com/repos/sztyup/lauth/zipball/d06e3d5d82e740ac445edee0791597b0d94b45c2",
+                "reference": "d06e3d5d82e740ac445edee0791597b0d94b45c2",
                 "shasum": ""
             },
             "require": {
@@ -3731,7 +3731,7 @@
                 "illuminate/contracts": "^6.9",
                 "illuminate/support": "^6.9",
                 "laravel-doctrine/orm": "^1.5",
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
@@ -3742,7 +3742,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Sztyup\\Lauth\\LauthServiceProvider"
+                        "Sztyup\\LAuth\\LAuthServiceProvider"
                     ]
                 }
             },
@@ -3762,7 +3762,7 @@
                 }
             ],
             "description": "Auth plugin for Laravel 5",
-            "time": "2019-12-27T15:28:04+00:00"
+            "time": "2019-12-28T16:26:09+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -2,9 +2,11 @@
 
 namespace Sztyup\LAuth\Authsch;
 
+use Illuminate\Support\Arr;
 use Sztyup\LAuth\AbstractProvider;
 use Sztyup\LAuth\Entities\Account;
 use Sztyup\LAuth\ProviderUser;
+use Sztyup\LAuth\TokenResponse;
 
 class AuthschProvider extends AbstractProvider
 {
@@ -44,6 +46,28 @@ class AuthschProvider extends AbstractProvider
         $response = $this->guzzle->get($userUrl);
 
         return json_decode($response->getBody(), true);
+    }
+
+    protected function getAccessTokenFromCode(string $code): TokenResponse
+    {
+        $response = $this->guzzle->post($this->config['token_url'], [
+            'headers' => ['Accept' => 'application/json'],
+            'form_params' => [
+                'client_id' => $this->config['client_id'],
+                'client_secret' => $this->config['client_secret'],
+                'code' => $code,
+                'grant_type' => 'authorization_code'
+            ]
+        ]);
+
+        $response = json_decode($response->getBody(), true);
+
+        $return = new TokenResponse();
+        $return->accessToken = Arr::get($response, 'access_token');
+        $return->refreshToken = Arr::get($response, 'refresh_token');
+        $return->accessTokenExpiration = Arr::get($response, 'expires_in');
+
+        return $return;
     }
 
     /**

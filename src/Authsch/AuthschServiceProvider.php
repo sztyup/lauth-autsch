@@ -7,7 +7,7 @@ use Sztyup\LAuth\LAuth;
 
 class AuthschServiceProvider extends ServiceProvider
 {
-    public function boot(LAuth $LAuth)
+    public function boot(LAuth $LAuth): void
     {
         $LAuth->addProvider('authsch', AuthschProvider::class);
     }

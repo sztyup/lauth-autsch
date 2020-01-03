@@ -4,6 +4,7 @@ namespace Sztyup\LAuth\Authsch;
 
 use Illuminate\Support\Arr;
 use Sztyup\LAuth\AbstractProvider;
+use Sztyup\LAuth\Authsch\Entities\AuthschAccount;
 use Sztyup\LAuth\Entities\Account;
 use Sztyup\LAuth\ProviderUser;
 use Sztyup\LAuth\TokenResponse;
@@ -39,15 +40,6 @@ class AuthschProvider extends AbstractProvider
         return $this->config['base'] . '/site/login?' . http_build_query($parameters);
     }
 
-    protected function getResponseFromToken(string $accessToken): array
-    {
-        $userUrl = sprintf('%s/api/profile?access_token=%s', $this->config['base'], $accessToken);
-
-        $response = $this->guzzle->get($userUrl);
-
-        return json_decode($response->getBody(), true);
-    }
-
     protected function getAccessTokenFromCode(string $code): TokenResponse
     {
         $response = $this->guzzle->post($this->config['token_url'], [
@@ -68,6 +60,24 @@ class AuthschProvider extends AbstractProvider
         $return->accessTokenExpiration = Arr::get($response, 'expires_in');
 
         return $return;
+    }
+
+    protected function getUserByAccessToken(string $accessToken): ProviderUser
+    {
+        $response = $this->guzzle->get(
+            sprintf('%s/api/profile?access_token=%s', $this->config['base'], $accessToken)
+        );
+
+        $data = json_decode($response->getBody(), true);
+
+        $user = new ProviderUser();
+
+        $user->providerId = $data['internal_id'];
+        $user->name = $data['displayName'];
+        $user->email = $data['mail'];
+        $user->data = $data;
+
+        return $user;
     }
 
     /**

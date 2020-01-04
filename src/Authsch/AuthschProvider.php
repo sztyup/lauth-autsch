@@ -16,6 +16,16 @@ class AuthschProvider extends AbstractProvider
         return 'authsch';
     }
 
+    public static function getEntitiesPath(): string
+    {
+        return __DIR__ . '/Entities';
+    }
+
+    public static function getAccountEntity(): string
+    {
+        return AuthschAccount::class;
+    }
+
     public function createAccount(ProviderUser $providerUser): Account
     {
         $account = new AuthschAccount();
@@ -40,7 +50,7 @@ class AuthschProvider extends AbstractProvider
         return $this->config['base'] . '/site/login?' . http_build_query($parameters);
     }
 
-    protected function getAccessTokenFromCode(string $code): TokenResponse
+    protected function getTokensFromCode(string $code): TokenResponse
     {
         $response = $this->guzzle->post($this->config['token_url'], [
             'headers' => ['Accept' => 'application/json'],

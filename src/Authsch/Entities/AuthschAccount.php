@@ -7,6 +7,7 @@ use Sztyup\LAuth\Entities\Account;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="lauth_authsch")
  */
 class AuthschAccount extends Account
 {

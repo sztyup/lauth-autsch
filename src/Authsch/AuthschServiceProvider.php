@@ -3,15 +3,12 @@
 namespace Sztyup\LAuth\Authsch;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelDoctrine\ORM\DoctrineManager;
-use Sztyup\LAuth\Authsch\Entities\AuthschAccount;
-use Sztyup\LAuth\LAuth;
+use Sztyup\LAuth\ProviderRegistry;
 
 class AuthschServiceProvider extends ServiceProvider
 {
-    public function boot(LAuth $LAuth, DoctrineManager $doctrineManager): void
+    public function boot(ProviderRegistry $providerRegistry): void
     {
-        $LAuth->addProvider('authsch', AuthschProvider::class, AuthschAccount::class);
-        $doctrineManager->addPaths([__DIR__ . './Entities']);
+        $providerRegistry->register('authsch', AuthschProvider::class);
     }
 }

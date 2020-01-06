@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79a19a1fbe03bff2e35c5893a73c176d",
+    "content-hash": "8e20788be69dc2c8b75e1630b7c8d91d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1061,44 +1061,46 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.3",
+            "version": "6.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba"
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/407b0cb880ace85c9b63c5f9551db498cb2d50ba",
-                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.4",
+                "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5"
             },
             "require-dev": {
                 "ext-curl": "*",
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1122,7 +1124,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-04-22T15:46:56+00:00"
+            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1483,16 +1485,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.62",
+            "version": "1.0.63",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0"
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0",
-                "reference": "14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
                 "shasum": ""
             },
             "require": {
@@ -1563,7 +1565,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-12-29T14:46:55+00:00"
+            "time": "2020-01-04T16:30:31+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3712,21 +3714,21 @@
         },
         {
             "name": "sztyup/lauth",
-            "version": "0.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sztyup/lauth.git",
-                "reference": "39cb0c2f6efe90e28166ee1a0dd751314eb09f2a"
+                "reference": "f02a544f42c37f3aa72d32f31962efc9d11aba1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sztyup/lauth/zipball/39cb0c2f6efe90e28166ee1a0dd751314eb09f2a",
-                "reference": "39cb0c2f6efe90e28166ee1a0dd751314eb09f2a",
+                "url": "https://api.github.com/repos/sztyup/lauth/zipball/f02a544f42c37f3aa72d32f31962efc9d11aba1c",
+                "reference": "f02a544f42c37f3aa72d32f31962efc9d11aba1c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/guzzle": "6.3.*",
+                "guzzlehttp/guzzle": "^6.3",
                 "illuminate/contracts": "^6.9",
                 "illuminate/support": "^6.9",
                 "laravel-doctrine/orm": "^1.5",
@@ -3761,7 +3763,7 @@
                 }
             ],
             "description": "Auth plugin for Laravel 5",
-            "time": "2020-01-04T14:34:08+00:00"
+            "time": "2020-01-06T18:56:11+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4134,16 +4136,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v4.4.2",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "74e50f799757cfdef2398a9571aae889a5f4d60f"
+                "reference": "b92e31c5b101fc87bc5c3137610151dcae82f0e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/74e50f799757cfdef2398a9571aae889a5f4d60f",
-                "reference": "74e50f799757cfdef2398a9571aae889a5f4d60f",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/b92e31c5b101fc87bc5c3137610151dcae82f0e3",
+                "reference": "b92e31c5b101fc87bc5c3137610151dcae82f0e3",
                 "shasum": ""
             },
             "require": {
@@ -4151,13 +4153,13 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "laravel/framework": "^6.4",
+                "laravel/framework": "^6.9",
                 "laravel/laravel": "dev-master",
                 "mockery/mockery": "^1.2.3",
-                "phpunit/phpunit": "^8.3"
+                "phpunit/phpunit": "^8.3 || ^9.0"
             },
             "suggest": {
-                "laravel/framework": "Required for testing (^6.4).",
+                "laravel/framework": "Required for testing (^6.9).",
                 "mockery/mockery": "Allow using Mockery for testing (^1.2.3).",
                 "orchestra/testbench-browser-kit": "Allow using legacy Laravel BrowserKit for testing (^4.0).",
                 "orchestra/testbench-dusk": "Allow using Laravel Dusk for testing (^4.0).",
@@ -4195,7 +4197,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2019-12-10T03:55:50+00:00"
+            "time": "2019-12-31T01:37:59+00:00"
         },
         {
             "name": "phar-io/manifest",

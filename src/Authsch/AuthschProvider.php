@@ -26,11 +26,11 @@ class AuthschProvider extends AbstractProvider
         return AuthschAccount::class;
     }
 
-    public function createAccount(ProviderUser $providerUser): Account
+    public function createAccount(ProviderUser $providerUser, TokenResponse $tokens): Account
     {
         $account = new AuthschAccount();
 
-        $this->updateAccount($account, $providerUser);
+        $this->updateAccount($account, $providerUser, $tokens);
 
         $this->em->persist($account);
 
@@ -93,10 +93,22 @@ class AuthschProvider extends AbstractProvider
     /**
      * @param Account|AuthschAccount $account
      * @param ProviderUser $providerUser
+     * @param TokenResponse $tokens
      */
-    protected function updateAccount(Account $account, ProviderUser $providerUser): void
+    protected function updateAccount(Account $account, ProviderUser $providerUser, TokenResponse $tokens): void
     {
         $data = $providerUser->data;
+
+        $account
+            ->setName($data['displayName'])
+            ->setEmail($data['mail'])
+            ->setProviderUserId($providerUser->providerId)
+            ->setAccessToken($tokens->accessToken)
+        ;
+
+        if (!empty($tokens->refreshToken)) {
+            $account->setRefreshToken($tokens->refreshToken);
+        }
 
         if (isset($data['mobile'])) {
             $account->setPhone($data['mobile']);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60224e2d045dadab6ffbcb8a4070e31e",
+    "content-hash": "ceee03c549141eb84de2fc15f692e728",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3714,16 +3714,16 @@
         },
         {
             "name": "sztyup/lauth",
-            "version": "0.4.3",
+            "version": "0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sztyup/lauth.git",
-                "reference": "e992ac18fe968acdb4b4baed8042a6d0d23273b0"
+                "reference": "29a07e60951037fe7ebb5b8a19b10a9dc3bb79e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sztyup/lauth/zipball/e992ac18fe968acdb4b4baed8042a6d0d23273b0",
-                "reference": "e992ac18fe968acdb4b4baed8042a6d0d23273b0",
+                "url": "https://api.github.com/repos/sztyup/lauth/zipball/29a07e60951037fe7ebb5b8a19b10a9dc3bb79e1",
+                "reference": "29a07e60951037fe7ebb5b8a19b10a9dc3bb79e1",
                 "shasum": ""
             },
             "require": {
@@ -3763,7 +3763,7 @@
                 }
             ],
             "description": "Auth plugin for Laravel 5",
-            "time": "2020-01-06T19:55:29+00:00"
+            "time": "2020-01-06T20:02:24+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

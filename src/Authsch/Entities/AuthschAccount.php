@@ -32,14 +32,14 @@ class AuthschAccount extends Account
     protected $lastName;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
      */
     protected $schacc;
 
     /**
-     * @var integer
+     * @var integer|null
      *
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -67,14 +67,14 @@ class AuthschAccount extends Account
     protected $virUid;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="phonenumber", nullable=true)
      */
     protected $phone;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
      */
@@ -104,7 +104,7 @@ class AuthschAccount extends Account
         return $this;
     }
 
-    public function getSchacc(): string
+    public function getSchacc(): ?string
     {
         return $this->schacc;
     }
@@ -116,7 +116,7 @@ class AuthschAccount extends Account
         return $this;
     }
 
-    public function getBmeId(): int
+    public function getBmeId(): ?int
     {
         return $this->bmeId;
     }

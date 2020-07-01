@@ -95,7 +95,7 @@ class AuthschProvider extends AbstractProvider
      * @param ProviderUser $providerUser
      * @param TokenResponse $tokens
      */
-    protected function updateAccount(Account $account, ProviderUser $providerUser, TokenResponse $tokens): void
+    protected function updateAccount(Account $account, ProviderUser $providerUser, ?TokenResponse $tokens): void
     {
         $data = $providerUser->data;
 
@@ -103,11 +103,16 @@ class AuthschProvider extends AbstractProvider
             ->setName($data['displayName'])
             ->setEmail($data['mail'])
             ->setProviderUserId($providerUser->providerId)
-            ->setAccessToken($tokens->accessToken)
         ;
 
-        if (!empty($tokens->refreshToken)) {
-            $account->setRefreshToken($tokens->refreshToken);
+        if ($tokens !== null) {
+            if ($tokens->accessToken !== null) {
+                $account->setAccessToken($tokens->accessToken);
+            }
+
+            if (!empty($tokens->refreshToken !== null)) {
+                $account->setRefreshToken($tokens->refreshToken);
+            }
         }
 
         if (isset($data['mobile'])) {

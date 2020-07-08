@@ -67,14 +67,7 @@ class AuthschProvider extends AbstractProvider
             ]
         );
 
-        $response = json_decode($response->getBody(), true);
-
-        $return                        = new TokenResponse();
-        $return->accessToken           = Arr::get($response, 'access_token');
-        $return->refreshToken          = Arr::get($response, 'refresh_token');
-        $return->accessTokenExpiration = Arr::get($response, 'expires_in');
-
-        return $return;
+        return $this->parseTokenResponse($response);
     }
 
     protected function getUserByAccessToken(string $accessToken, bool $forceRefresh = false): ProviderUser
@@ -89,7 +82,7 @@ class AuthschProvider extends AbstractProvider
             sprintf('%s/api/profile?access_token=%s', $this->config['base'], $accessToken)
         );
 
-        $data = json_decode($response->getBody(), true);
+        $data = json_decode($response->getBody()->getContents(), true);
 
         $user = new ProviderUser();
 

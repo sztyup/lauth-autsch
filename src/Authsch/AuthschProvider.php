@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sztyup\LAuth\Authsch;
 
 use Illuminate\Support\Arr;
@@ -40,10 +42,10 @@ class AuthschProvider extends AbstractProvider
     protected function redirectUrl(string $state): string
     {
         $parameters = [
-            'state' => $state,
-            'client_id' => $this->config['client_id'],
+            'state'         => $state,
+            'client_id'     => $this->config['client_id'],
             'client_secret' => $this->config['client_secret'],
-            'scope' => implode(' ', $this->config['scopes']),
+            'scope'         => implode(' ', $this->config['scopes']),
             'response_type' => 'code'
         ];
 
@@ -52,28 +54,37 @@ class AuthschProvider extends AbstractProvider
 
     protected function getTokensFromCode(string $code): TokenResponse
     {
-        $response = $this->guzzle->post($this->config['token_url'], [
-            'headers' => ['Accept' => 'application/json'],
-            'form_params' => [
-                'client_id' => $this->config['client_id'],
-                'client_secret' => $this->config['client_secret'],
-                'code' => $code,
-                'grant_type' => 'authorization_code'
+        $response = $this->guzzle->post(
+            $this->config['token_url'],
+            [
+                'headers'     => ['Accept' => 'application/json'],
+                'form_params' => [
+                    'client_id'     => $this->config['client_id'],
+                    'client_secret' => $this->config['client_secret'],
+                    'code'          => $code,
+                    'grant_type'    => 'authorization_code'
+                ]
             ]
-        ]);
+        );
 
         $response = json_decode($response->getBody(), true);
 
-        $return = new TokenResponse();
-        $return->accessToken = Arr::get($response, 'access_token');
-        $return->refreshToken = Arr::get($response, 'refresh_token');
+        $return                        = new TokenResponse();
+        $return->accessToken           = Arr::get($response, 'access_token');
+        $return->refreshToken          = Arr::get($response, 'refresh_token');
         $return->accessTokenExpiration = Arr::get($response, 'expires_in');
 
         return $return;
     }
 
-    protected function getUserByAccessToken(string $accessToken): ProviderUser
+    protected function getUserByAccessToken(string $accessToken, bool $forceRefresh = false): ProviderUser
     {
+        if ($forceRefresh) {
+            $this->guzzle->get(
+                sprintf('%s/api/profile/resync?access_token=%s', $this->config['base'], $accessToken)
+            );
+        }
+
         $response = $this->guzzle->get(
             sprintf('%s/api/profile?access_token=%s', $this->config['base'], $accessToken)
         );
@@ -83,9 +94,9 @@ class AuthschProvider extends AbstractProvider
         $user = new ProviderUser();
 
         $user->providerId = $data['internal_id'];
-        $user->name = $data['displayName'];
-        $user->email = $data['mail'];
-        $user->data = $data;
+        $user->name       = $data['displayName'];
+        $user->email      = $data['mail'];
+        $user->data       = $data;
 
         return $user;
     }

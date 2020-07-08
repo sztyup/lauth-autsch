@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sztyup\LAuth\Authsch\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -11,11 +13,11 @@ use Sztyup\LAuth\Entities\Account;
  */
 class AuthschAccount extends Account
 {
-    public const BME_STATUS_NEWBIE = 4;
-    public const BME_STATUS_VIK_ACTIVE = 3;
+    public const BME_STATUS_NEWBIE      = 4;
+    public const BME_STATUS_VIK_ACTIVE  = 3;
     public const BME_STATUS_VIK_PASSIVE = 2;
-    public const BME_STATUS_BME = 1;
-    public const BME_STATUS_NONE = 0;
+    public const BME_STATUS_BME         = 1;
+    public const BME_STATUS_NONE        = 0;
 
     /**
      * @var string

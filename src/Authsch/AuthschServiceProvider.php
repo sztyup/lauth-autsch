@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sztyup\LAuth\Authsch;
 
 use Illuminate\Support\ServiceProvider;

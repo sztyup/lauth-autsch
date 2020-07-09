@@ -149,7 +149,7 @@ class AuthschProvider extends AbstractProvider
 
             if (isset($data['linkedAccounts']['bme'])) {
                 $arr = explode('@', $data['linkedAccounts']['bme']);
-                $account->setBmeId($arr[0]);
+                $account->setBmeId((int)$arr[0]);
             }
         }
 

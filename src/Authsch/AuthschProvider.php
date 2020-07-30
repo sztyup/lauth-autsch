@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Sztyup\LAuth\Authsch;
 
-use Illuminate\Support\Arr;
 use Sztyup\LAuth\AbstractProvider;
 use Sztyup\LAuth\Authsch\Entities\AuthschAccount;
 use Sztyup\LAuth\Entities\Account;

@@ -11,7 +11,7 @@ class AuthschServiceProvider extends ServiceProvider
 {
     public function boot(ProviderRegistry $providerRegistry): void
     {
-        $providerRegistry->register('authsch', AuthschProvider::class);
         $providerRegistry->register('authsch-bme', BmeProvider::class);
+        $providerRegistry->register('authsch', AuthschProvider::class);
     }
 }

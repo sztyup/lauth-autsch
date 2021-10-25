@@ -155,6 +155,8 @@ class AuthschProvider extends AbstractProvider
         if (isset($data['bmeunitscope'])) {
             if (in_array('BME_VIK_NEWBIE', $data['bmeunitscope'], true)) {
                 $account->setBmeStatus(AuthschAccount::BME_STATUS_NEWBIE);
+            } elseif (in_array('BME_VBK_NEWBIE', $data['bmeunitscope'], true)) {
+                $account->setBmeStatus(AuthschAccount::BME_STATUS_VBK_NEWBIE);
             } elseif (in_array('BME_VIK_ACTIVE', $data['bmeunitscope'], true)) {
                 $account->setBmeStatus(AuthschAccount::BME_STATUS_VIK_ACTIVE);
             } elseif (in_array('BME_VIK', $data['bmeunitscope'], true)) {

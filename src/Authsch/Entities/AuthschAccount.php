@@ -13,6 +13,7 @@ use Sztyup\LAuth\Entities\Account;
  */
 class AuthschAccount extends Account
 {
+    public const BME_STATUS_VBK_NEWBIE  = 5;
     public const BME_STATUS_NEWBIE      = 4;
     public const BME_STATUS_VIK_ACTIVE  = 3;
     public const BME_STATUS_VIK_PASSIVE = 2;
